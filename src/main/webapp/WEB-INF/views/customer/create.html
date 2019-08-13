@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="#{create.title}"></h1>
+Language: <a href="?lang=en">English</a> | <a href="?lang=language">Vietnamese</a>
+<p>
+    <a href="/customer/list" th:text="#{list.heading}"></a>
+</p>
+<th:block th:if="${message}">
+    <p th:text ="${message}"></p>
+</th:block>
+<form th:action="@{/customer/save}" method="post" th:object="${customer}">
+    <table>
+        <tr>
+            <td th:text="#{create.first_name}"></td>
+            <td><input type="text" th:field="*{firstName}"></td>
+        </tr>
+        <tr>
+            <td th:text="#{create.last_name}"></td>
+            <td><input type="text" th:field="*{lastName}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" th:value="#{create.submit}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

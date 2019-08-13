@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{delete.title}"></title>
+</head>
+<body>
+<h1 th:text="#{delete.heading}"></h1>
+Language: <a href="?lang=en">English</a> | <a href="?lang=language">Vietnamese</a>
+<p>
+    <a href="/customer/list" th:text="#{list.heading}"></a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/customer/remove}" th:object="${customer}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td th:text="#{delete.first_name}"></td>
+            <td th:text="${customer.firstName}"></td>
+        </tr>
+        <tr>
+            <td th:text="#{delete.last_name}"></td>
+            <td th:text="${customer.lastName}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" th:value="#{delete.submit}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
